@@ -1,54 +1,89 @@
-let qI = 0;
-let time = 60;
+let idxQuestion = 0;
+let timeLimit = 60;
+const numSelectedQuestions = 3;
+
 const questions = [
     {
-        Q: 'question 1',
-        A: ['a','b','c','d'],
-        C: 'b'
+        question: 'question index1',
+        choices: ['a','b','c','d'],
+        answer: 'a'
     },
     {
-        Q: 'question 2',
-        A: ['a','b','c','d'],
-        C: 'b'
+        question: 'question index2',
+        choices: ['a','b','c'],
+        answer: 'b'
     },
     {
-        Q: 'question 3',
-        A: ['a','b','c','d'],
-        C: 'b'
+        question: 'question index3',
+        choices: ['a','b','c','d','e'],
+        answer: 'c'
     },
     {
-        Q: 'question 4',
-        A: ['a','b','c','d'],
-        C: 'b'
+        question: 'question index4',
+        choices: ['a','b','c','d'],
+        answer: 'd'
     },
     {
-        Q: 'question 5',
-        A: ['a','b','c','d'],
-        C: 'b'
+        question: 'question index5',
+        choices: ['a','b','c','d'],
+        answer: 'a'
     },
 ];
 
-let timer = () => {
-    setInterval(()=>{
-        time--;
-        clock.innerText = time;
-    },1000)   
-};
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+
+///////// timer
+function updateClock() {
+    if (timeLimit > 0) {
+        timeLimit--;
+        clock.innerText = timeLimit;
+    } else {
+        clearInterval(interval);
+    }
+}
+
+function startClock() {
+    interval = setInterval(updateClock, 1000);
+}
+///////// 
+
 
 const main = document.querySelector('main');
 
-const init = () => {
-    timer();
+function init() {
+    shuffleArray(questions);
+    const selectedQuestions = questions.slice(0, numSelectedQuestions);
 
-    
-    main.innerHTML = `<h1>${questions[qI].Q}<h1><div id="ans"></div>`;
+    startClock();
+
+    // Show the question and create a div for the choices
+    main.innerHTML = `<h1>${selectedQuestions[idxQuestion].question}</h1><div id="ans"></div>`;
     
     const ansDiv = document.getElementById('ans');
     
-    questions[0].A.forEach(ans => {
-        ansDiv.innerHTML += `<button>${ans}</button>`;
+    // Show the buttons from the selected questions array
+    selectedQuestions[0].choices.forEach(ans => {
+        ansDiv.innerHTML += `<button>${ans}</button><br/>`;
     });
-};
 
+    // add a click event listener to each button
+    document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', () => {
+            // 
+            const isCorrect = button.textContent === selectedQuestions[idxQuestion].answer;
+            if(isCorrect){
+                console.log('Correct!');
+            } else {
+                console.log('Incorrect');
+            }
+        });
+    });
+}
 
 init();
