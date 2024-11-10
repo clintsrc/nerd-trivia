@@ -1,6 +1,10 @@
 let idxQuestion = 0;
 let timeLimit = 60;
 const numSelectedQuestions = 3;
+// starting the score at 0.
+let score = 0;
+const ttlScore = numSelectedQuestions;
+
 
 const questions = [
     {
@@ -79,11 +83,63 @@ function init() {
             const isCorrect = button.textContent === selectedQuestions[idxQuestion].answer;
             if(isCorrect){
                 console.log('Correct!');
+                score++;
             } else {
                 console.log('Incorrect');
             }
+
+// Collects and keeps the score
+    document.getElementById('score').innerText = `Score: ${score}/${ttlScore}`;
+        if (idxQuestion < numSelectedQuestions - 1){
+            idxQuestion++;
+            displayNextQuestion(selectedQuestions);
+        } else {
+            endGame();
+        }
         });
     });
+}
+
+// display the next question and answer choices
+function displayNextQuestion(selectedQuestions){
+    const main =document.querySelector('main');
+    main.innerHTML= `<h1>${selectedQuestions[idxQuestion].question}</h1><div id="ans"></div>`;
+    const ansDiv = document.getElementById('ans');
+
+selectedQuestions[idxQuestion].choices.forEach(ans => {
+    ansDiv.innerHTML += `<button>${ans}</button><br/>`;
+});
+
+
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', () => {
+        const isCorrect = button.textContent === selectedQuestions[idxQuestion].answer;
+
+        if (isCorrect) {
+            console.log('Correct!');
+            score++;
+        } else {
+            console.log('Incorrect');
+        }
+
+        // Update the score display
+        document.getElementById('score').innerText = `Score: ${score} / ${ttlScore}`;
+
+        // Move to the next question or end the game if it's the last question
+        if (idxQuestion < numSelectedQuestions - 1) {
+            idxQuestion++;
+            displayNextQuestion(selectedQuestions);
+        } else {
+            endGame();
+        }
+    });
+});
+}
+
+// ends game and displays final score, could possibly add unique ending text after MVP is launched.
+function endGame(){
+    const main = document.querySelector('main');
+    main.innerHTML = `<h1>Yay it worked!!!!</h1><p>Final score: ${score}/${ttlScore}</p>`;
 }
 
 init();
