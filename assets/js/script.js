@@ -5,9 +5,10 @@ const numSelectedQuestions = 3;
 let score = 0;
 const ttlScore = numSelectedQuestions;
 
-const main = document.querySelector('main');
-const showCorrectAnswer = document.querySelector('.soln');
-const showScore = document.querySelector('.score');
+const showQuestions = document.querySelector('.containerQuests');
+const showCorrectAnswer = document.querySelector('.displayAnswr');
+const showScore = document.querySelector('.displayScore');
+const frmSubmitEl = document.querySelector("form");
 
 const questions = [
     {
@@ -33,7 +34,7 @@ const questions = [
     {
         question: 'question index5',
         choices: ['a5','b5','c5','d5'],
-        answer: 'a1'
+        answer: 'a5'
     },
 ];
 
@@ -45,27 +46,27 @@ function shuffleArray(array) {
 }
 
 
-///////// timer
-function updateClock() {
-    if (timeLimit > 0) {
-        timeLimit--;
-        clock.innerText = timeLimit;
-    } else {
-        clearInterval(interval);
-    }
-}
+// ///////// timer
+// function updateClock() {
+//     if (timeLimit > 0) {
+//         timeLimit--;
+//         clock.innerText = timeLimit;
+//     } else {
+//         clearInterval(interval);
+//     }
+// }
 
-function startClock() {
-    interval = setInterval(updateClock, 1000);
-}
-///////// 
+// function startClock() {
+//     interval = setInterval(updateClock, 1000);
+// }
+// ///////// 
 
 function init() {
     shuffleArray(questions);
     const selectedQuestions = questions.slice(0, numSelectedQuestions);
 
     displayNextQuestion(selectedQuestions);
-    startClock();
+    // startClock();
 }
 
 function handleAnswerClick (event, selectedQuestions) {
@@ -96,7 +97,7 @@ function handleAnswerClick (event, selectedQuestions) {
 // display the next question and answer choices
 function displayNextQuestion(selectedQuestions){
     // Show the question and create a div for the choices
-    main.innerHTML= `<h1>${selectedQuestions[idxQuestion].question}</h1><div id="ans"></div>`;
+    showQuestions.innerHTML= `<h1>${selectedQuestions[idxQuestion].question}</h1><div id="ans"></div>`;
     const ansDiv = document.getElementById('ans');
        
     // Show the buttons from the selected questions array
@@ -112,7 +113,12 @@ function displayNextQuestion(selectedQuestions){
 
 // ends game and displays final score, could possibly add unique ending text after MVP is launched.
 function endGame() {
-    main.innerHTML = `<h1>Yay it worked!!!!</h1><div>Final score: ${score}/${ttlScore}</div>`;
+    showQuestions.innerHTML = `<h1>Yay it worked!!!!</h1><div>Final score: ${score}/${ttlScore}</div>`;
 }
+
+function handleSubmission(e) {
+    e.preventDefault();
+}
+frmSubmitEl.addEventListener('submit', handleSubmission);
 
 init();
