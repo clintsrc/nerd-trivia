@@ -3,12 +3,7 @@ body {
     background: beige;
 }
 
-header {
-    text-align: center;
-    position: relative;
-}
-
-#clock {
+/* #clock {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -16,13 +11,4 @@ header {
     border: 4px solid #000;
     padding: 5px;
     border-radius: 8px;
-}
-
-main {
-    margin: 10%;
-}
-
-p{
-    position:fixed;
-    background-color: aqua;
-}
+} */
