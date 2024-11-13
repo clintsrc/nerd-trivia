@@ -1,0 +1,48 @@
+body {
+    background-color: slategrey;
+}
+
+.header {
+    background-color: rgb(110, 46, 188);
+}
+h1 {
+    text-align: center;
+    padding-top: 20px;
+    color: white;
+}
+
+.displayName {
+    color: white;
+    font-size: x-large;
+    padding-left: 5%;
+    margin-left: 5%;
+}
+
+.containerQuests {
+    background-color: peachpuff;
+    margin: 20px;
+    padding: 20px;
+}
+
+.UserInput {
+    background-color: lightcoral;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: large;
+}
+
+.displayScore {
+    font-size: xx-large;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: whitesmoke;
+    color: blue;
+}
+
+.container {    
+    max-width: 100%;
+}
