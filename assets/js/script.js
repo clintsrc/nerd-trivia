@@ -9,6 +9,9 @@ const showQuestions = document.querySelector('.containerQuests');
 const showCorrectAnswer = document.querySelector('.displayAnswr');
 const showScore = document.querySelector('.displayScore');
 const frmSubmitEl = document.querySelector("form");
+const showAllScores = document.querySelector('.displaySavedScores');
+const usernameInput = document.getElementById('username');
+
 
 const questions = [
     {
@@ -112,8 +115,43 @@ function displayNextQuestion(selectedQuestions){
 }
 
 // ends game and displays final score, could possibly add unique ending text after MVP is launched.
+
+function displayLocalStorage(){
+    const scores = localStorage.getItem('score');
+  
+    if(scores) {
+    return JSON.parse(scores);
+    } else {
+    return [];
+    }
+  };
+
+// Shows the saved scores from localstorage. Crude, but it works soo
+
+function showStoredScores() {
+    const scores = displayLocalStorage();
+    if (scores.length > 0) {
+        showAllScores.innerHTML = `<h2>Previous Scores:</h2><ul>`;
+        scores.forEach(scores => {
+            showAllScores.innerHTML += `<li>${username}: ${score}/${ttlScore}</li>`;
+            showAllScores.innerHTML += `</ul>`;
+        }); 
+    }
+}
+
+
+function scoreLocalStorage(username, score){
+    const scores = displayLocalStorage();
+    const playerResults = { username: username, score: score };
+    scores.push(playerResults);
+    localStorage.setItem('score', JSON.stringify(scores))
+    showStoredScores();
+    };
+
 function endGame() {
+    const username = usernameInput.value.trim();
     showQuestions.innerHTML = `<h1>Yay it worked!!!!</h1><div>Final score: ${score}/${ttlScore}</div>`;
+    scoreLocalStorage(username, score)
 }
 
 function handleSubmission(e) {
