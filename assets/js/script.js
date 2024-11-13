@@ -105,11 +105,11 @@ function displayNextQuestion(selectedQuestions){
        
     // Show the buttons from the selected questions array
     selectedQuestions[idxQuestion].choices.forEach(ans => {
-        ansDiv.innerHTML += `<button>${ans}</button><br/>`;
+        ansDiv.innerHTML += `<button class="selection">${ans}</button><br/>`;
     });
 
     // add a click event listener to each button
-    document.querySelectorAll('button').forEach(button => {
+    document.querySelectorAll('.selection').forEach(button => {
         button.addEventListener('click', (event) => handleAnswerClick(event, selectedQuestions));
     });
 }
