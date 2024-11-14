@@ -41,6 +41,18 @@ const questions = [
     },
 ];
 
+
+/*
+ *  Shuffle the available questions
+ *
+ *  This function uses a commonly availalble Fisher–Yates shuffle algorithm:
+ *  1. Starting from the end of the array, the algorithm iterates backward.
+ *  2. For each position i, it picks a random index j between 0 and i.
+ *  3. It swaps the elements at positions i and j.
+ * 
+ *  (ref: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
+ * 
+ */
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -105,16 +117,14 @@ function displayNextQuestion(selectedQuestions){
        
     // Show the buttons from the selected questions array
     selectedQuestions[idxQuestion].choices.forEach(ans => {
-        ansDiv.innerHTML += `<button>${ans}</button><br/>`;
+        ansDiv.innerHTML += `<button class="selection">${ans}</button><br/>`;
     });
 
     // add a click event listener to each button
-    document.querySelectorAll('button').forEach(button => {
+    document.querySelectorAll('.selection').forEach(button => {
         button.addEventListener('click', (event) => handleAnswerClick(event, selectedQuestions));
     });
 }
-
-// ends game and displays final score, could possibly add unique ending text after MVP is launched.
 
 function displayLocalStorage(){
     const scores = localStorage.getItem('score');
@@ -148,6 +158,7 @@ function scoreLocalStorage(username, score){
     showStoredScores();
     };
 
+// ends game and displays final score, could possibly add unique ending text after MVP is launched.
 function endGame() {
     const username = usernameInput.value.trim();
     showQuestions.innerHTML = `<h1>Yay it worked!!!!</h1><div>Final score: ${score}/${ttlScore}</div>`;
