@@ -4,7 +4,15 @@
 const usernameDisplay = document.querySelector('.displayName');
 const usernameInput = document.getElementById('username');
 const usernameForm = document.getElementById('usernameForm');
+// carousel items
+const carousel = document.querySelector('.carousel');
+const prev = document.querySelector('.carousel-control-prev');
+const next = document.querySelector('.carousel-control-next');
 
+
+/*
+ * Username and localStorage functions
+ */
 function saveUsernameToLocalStorage(username){
   
     localStorage.setItem('username', username);
@@ -53,4 +61,25 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = redirectUrl;
         }
     }
+});
+
+
+/*
+ * Carousel functions
+ */
+prev.addEventListener('click', (event) => {
+    // Prevent default navigation
+    event.preventDefault();
+  
+    // Do something
+    console.log('prev Link clicked!');
+});
+
+
+next.addEventListener('click', (event) => {
+    // Prevent default navigation
+    event.preventDefault();
+  
+    // Do something
+    console.log('next Link clicked!');
 });
