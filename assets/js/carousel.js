@@ -33,7 +33,7 @@ function handleSubmission(e) {
         usernameDisplay.innerText = username;
         usernameInput.value = ''; //clears the current submit from the display
     } else {
-        alert("Can't be blank, nice try.")
+        showModal("Can't be blank, nice try.");
     }}
 
 usernameForm.addEventListener('submit', handleSubmission);
@@ -55,8 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const username = localStorage.getItem('username');
 
         if (!username) {
-            alert("Even alpha Chads have a name. Enter a username to proceed.")
-            
+            showModal("Even alpha Chads have a name. Enter a username to proceed.");
         } else if (redirectUrl){
             window.location.href = redirectUrl;
         }

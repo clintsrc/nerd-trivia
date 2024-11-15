@@ -5,11 +5,12 @@ let dialogMessage = document.querySelector(".dialogMessage");
 // add a css class to show the modal
 function showModal(message) {
   // default message
-  if (! message) {
+
+  if (!message) {
     message = "Unexpected showModal() message is empty";
   }
 
-  dialogMessage.innerHTML= `<p>${message}</p>`;
+  dialogMessage.innerHTML = `${message}`;
 
   modal.classList.add("show");
 }
