@@ -21,5 +21,3 @@ function handleCloseModal() {
 
 // handle the modal's close button
 closeButton.addEventListener('click', handleCloseModal);
-
-showModal("testing");
