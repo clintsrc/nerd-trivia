@@ -9,7 +9,7 @@ const showQuestions = document.querySelector('.containerQuests');
 const showCorrectAnswer = document.querySelector('.displayAnswr');
 const showScore = document.querySelector('.displayScore');
 const showAllScores = document.querySelector('.displaySavedScores');
-const usernameDisplay = document.querySelector('.displayName');
+// const usernameDisplay = document.querySelector('.displayName'); <-- is on the carousel.js
 
 
 const questions = [
@@ -44,7 +44,7 @@ const questions = [
 /*
  *  Shuffle the available questions
  *
- *  This function uses a commonly availalble Fisher–Yates shuffle algorithm:
+ *  This function uses a commonly available Fisher–Yates shuffle algorithm:
  *  1. Starting from the end of the array, the algorithm iterates backward.
  *  2. For each position i, it picks a random index j between 0 and i.
  *  3. It swaps the elements at positions i and j.
@@ -126,12 +126,13 @@ function displayNextQuestion(selectedQuestions){
     });
 }
 
-function endGame(selectedQuestions) {
+function endGame() {
     const username = localStorage.getItem('username');
     showQuestions.innerHTML = `<h1>Game Over.</h1><div>Well done ${username}. Your final score is: ${score}</div>`;
     scoreLocalStorage(username, score)
     showStoredScores();
 };
+
 
 function scoreLocalStorage(username, score){
     const scores = JSON.parse(localStorage.getItem('score')) || [];
@@ -157,10 +158,25 @@ function showStoredScores() {
         });
 
     }
+ 
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const storedUsername = localStorage.getItem('username');
+    
+    if (storedUsername) {
+ 
+        const usernameDisplay = document.querySelector('.displayName');
+        usernameDisplay.innerText = storedUsername;
+    }
+    
+    init();
+});
 
-init();
+
+
+
+
 
 // // get the form element
 // 
