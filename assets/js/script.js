@@ -1,5 +1,5 @@
 let idxQuestion = 0;
-let timeLimit = 60;
+// let timeLimit = 60;
 const numSelectedQuestions = 3;
 // starting the score at 0.
 let score = 0;
@@ -8,9 +8,8 @@ const ttlScore = numSelectedQuestions;
 const showQuestions = document.querySelector('.containerQuests');
 const showCorrectAnswer = document.querySelector('.displayAnswr');
 const showScore = document.querySelector('.displayScore');
-const frmSubmitEl = document.querySelector("form");
 const showAllScores = document.querySelector('.displaySavedScores');
-const usernameInput = document.getElementById('username');
+const usernameDisplay = document.querySelector('.displayName');
 
 
 const questions = [
@@ -94,9 +93,10 @@ function handleAnswerClick (event, selectedQuestions) {
         score++;
         showLastAnswer = `Correct: ${correctAnswer}!`
     } else {
-        showLastAnswer = `Incorrect: ${button.textContent}. The correct answer is ${correctAnswer}`;
+        // Changed the 'username input' to player.username and it stopped the button issue..
+        showLastAnswer = `Incorrect. The correct answer is ${correctAnswer}`;
     }
-
+// Incorrect: ${player.username}. 
     showCorrectAnswer.innerText = showLastAnswer;
     console.log(showLastAnswer);
     showScore.innerText = `Score: ${score}/${ttlScore}`;
@@ -126,48 +126,50 @@ function displayNextQuestion(selectedQuestions){
     });
 }
 
+function endGame(selectedQuestions) {
+    const username = localStorage.getItem('username');
+    showQuestions.innerHTML = `<h1>Game Over.</h1><div>Well done ${username}. Your final score is: ${score}</div>`;
+    scoreLocalStorage(username, score)
+    showStoredScores();
+};
+
+function scoreLocalStorage(username, score){
+    const scores = JSON.parse(localStorage.getItem('score')) || [];
+    const playerResults = { username: username, score: score };
+    scores.push(playerResults);
+    localStorage.setItem('score', JSON.stringify(scores))
+    };
+
 function displayLocalStorage(){
-    const scores = localStorage.getItem('score');
-  
-    if(scores) {
-    return JSON.parse(scores);
-    } else {
-    return [];
-    }
+    const scores = JSON.parse(localStorage.getItem('score'));
+    return scores;
   };
 
-// Shows the saved scores from localstorage. Crude, but it works soo
+// Shows the saved scores and usernames to localstorage. Crude, but it works soo
 
 function showStoredScores() {
     const scores = displayLocalStorage();
     if (scores.length > 0) {
         showAllScores.innerHTML = `<h2>Previous Scores:</h2><ul>`;
-        scores.forEach(scores => {
-            showAllScores.innerHTML += `<li>${username}: ${score}/${ttlScore}</li>`;
+        scores.forEach(player => {
+            showAllScores.innerHTML += `<li>${player.username}: ${score}/${ttlScore}</li>`;
             showAllScores.innerHTML += `</ul>`;
-        }); 
+        });
+
     }
 }
 
 
-function scoreLocalStorage(username, score){
-    const scores = displayLocalStorage();
-    const playerResults = { username: username, score: score };
-    scores.push(playerResults);
-    localStorage.setItem('score', JSON.stringify(scores))
-    showStoredScores();
-    };
-
-// ends game and displays final score, could possibly add unique ending text after MVP is launched.
-function endGame() {
-    const username = usernameInput.value.trim();
-    showQuestions.innerHTML = `<h1>Yay it worked!!!!</h1><div>Final score: ${score}/${ttlScore}</div>`;
-    scoreLocalStorage(username, score)
-}
-
-function handleSubmission(e) {
-    e.preventDefault();
-}
-frmSubmitEl.addEventListener('submit', handleSubmission);
-
 init();
+
+// // get the form element
+// 
+
+// // setup a listener
+// frmSubmitEl.addEventListener('submit', handleSubmission);
+
+// // setup the callback
+// function handleSubmission(e) {
+//     e.preventDefault();  // make sure this beast is here!
+//     ...
+// 
