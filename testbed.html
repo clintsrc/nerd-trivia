@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/modal.css">
 </head>
 <body>
     <header class="header">
@@ -14,6 +15,7 @@
     </header>
 
      <main class="container">
+        <button id="show-modal" onclick="showModal()">Show Modal</button>
         <section class="UserInput">
            <div> 
                 <form>
@@ -37,6 +39,12 @@
             </a>
             <div class="displayScore"><!-- Display the Score here!! --></div>
             <div class="displayAnswr"><!-- Display incorrect or correct here --></div>
+            <div id="modalDialog" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <div class="dialogMessage"><!-- modal message here --></div>
+                </div>
+              </div>
         </section>
 
         <section class="containerQuests">
