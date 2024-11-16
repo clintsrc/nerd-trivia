@@ -1,5 +1,5 @@
 let idxQuestion = 0;
-let timeLimit = 60;
+// let timeLimit = 60;
 const numSelectedQuestions = 3;
 // starting the score at 0.
 let score = 0;
@@ -8,7 +8,9 @@ const ttlScore = numSelectedQuestions;
 const showQuestions = document.querySelector('.containerQuests');
 const showCorrectAnswer = document.querySelector('.displayAnswr');
 const showScore = document.querySelector('.displayScore');
-const frmSubmitEl = document.querySelector("form");
+const showAllScores = document.querySelector('.displaySavedScores');
+// const usernameDisplay = document.querySelector('.displayName'); <-- is on the carousel.js
+
 
 const questions = [
     {
@@ -38,6 +40,18 @@ const questions = [
     },
 ];
 
+
+/*
+ *  Shuffle the available questions
+ *
+ *  This function uses a commonly available Fisher–Yates shuffle algorithm:
+ *  1. Starting from the end of the array, the algorithm iterates backward.
+ *  2. For each position i, it picks a random index j between 0 and i.
+ *  3. It swaps the elements at positions i and j.
+ * 
+ *  (ref: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
+ * 
+ */
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -79,9 +93,10 @@ function handleAnswerClick (event, selectedQuestions) {
         score++;
         showLastAnswer = `Correct: ${correctAnswer}!`
     } else {
-        showLastAnswer = `Incorrect: ${button.textContent}. The correct answer is ${correctAnswer}`;
+        // Changed the 'username input' to player.username and it stopped the button issue..
+        showLastAnswer = `Incorrect. The correct answer is ${correctAnswer}`;
     }
-
+// Incorrect: ${player.username}. 
     showCorrectAnswer.innerText = showLastAnswer;
     console.log(showLastAnswer);
     showScore.innerText = `Score: ${score}/${ttlScore}`;
@@ -102,23 +117,75 @@ function displayNextQuestion(selectedQuestions){
        
     // Show the buttons from the selected questions array
     selectedQuestions[idxQuestion].choices.forEach(ans => {
-        ansDiv.innerHTML += `<button>${ans}</button><br/>`;
+        ansDiv.innerHTML += `<button class="selection">${ans}</button><br/>`;
     });
 
     // add a click event listener to each button
-    document.querySelectorAll('button').forEach(button => {
+    document.querySelectorAll('.selection').forEach(button => {
         button.addEventListener('click', (event) => handleAnswerClick(event, selectedQuestions));
     });
 }
 
-// ends game and displays final score, could possibly add unique ending text after MVP is launched.
 function endGame() {
-    showQuestions.innerHTML = `<h1>Yay it worked!!!!</h1><div>Final score: ${score}/${ttlScore}</div>`;
+    const username = localStorage.getItem('username');
+    showQuestions.innerHTML = `<h1>Game Over.</h1><div>Well done ${username}. Your final score is: ${score}</div>`;
+    scoreLocalStorage(username, score)
+    showStoredScores();
+};
+
+
+function scoreLocalStorage(username, score){
+    const scores = JSON.parse(localStorage.getItem('score')) || [];
+    const playerResults = { username: username, score: score };
+    scores.push(playerResults);
+    localStorage.setItem('score', JSON.stringify(scores))
+    };
+
+function displayLocalStorage(){
+    const scores = JSON.parse(localStorage.getItem('score'));
+    return scores;
+  };
+
+// Shows the saved scores and usernames to localstorage. Crude, but it works soo
+
+function showStoredScores() {
+    const scores = displayLocalStorage();
+    if (scores.length > 0) {
+        showAllScores.innerHTML = `<h2>Previous Scores:</h2><ul>`;
+        scores.forEach(player => {
+            showAllScores.innerHTML += `<li>${player.username}: ${score}/${ttlScore}</li>`;
+            showAllScores.innerHTML += `</ul>`;
+        });
+
+    }
+ 
 }
 
-function handleSubmission(e) {
-    e.preventDefault();
-}
-frmSubmitEl.addEventListener('submit', handleSubmission);
+document.addEventListener('DOMContentLoaded', function() {
+    const storedUsername = localStorage.getItem('username');
+    
+    if (storedUsername) {
+ 
+        const usernameDisplay = document.querySelector('.displayName');
+        usernameDisplay.innerText = storedUsername;
+    }
+    
+    init();
+});
 
-init();
+
+
+
+
+
+// // get the form element
+// 
+
+// // setup a listener
+// frmSubmitEl.addEventListener('submit', handleSubmission);
+
+// // setup the callback
+// function handleSubmission(e) {
+//     e.preventDefault();  // make sure this beast is here!
+//     ...
+// 
