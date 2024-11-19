@@ -4,8 +4,20 @@ body {
 }
 
 .header {
-    background-color: rgb(110, 46, 188);
+    background-color: #0e11a1;
+    background-color: #6e2ebc;
+    background-image: linear-gradient(to right, #6e2ebc, #0e11a1);
+    border: solid;
+    border-color: black;
+    border-width: 5px;
 }
+
+#gameName {
+    text-align: center;
+    padding-top: 20px;
+    color: white;
+}
+
 h1 {
     text-align: center;
     padding-top: 20px;
@@ -20,18 +32,24 @@ h1 {
 }
 
 .containerQuests {
-    background-color: peachpuff;
-    margin: 20px;
-    padding: 20px;
+    background-image: linear-gradient(to top, #6e2ebc, #0e11a1);
+    color: black;
+    width: 100%;
+    height: 80%;
+    overflow: hidden;
+    position: fixed
 }
 
 .UserInput {
-    background-color: lightcoral;
+    background-image: linear-gradient(to left, #6e2ebc, #0e11a1);
     text-align: center;
     color: white;
     font-weight: bold;
     margin-top: 20px;
     font-size: large;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
 }
 
 .displayScore {
@@ -48,3 +66,44 @@ h1 {
     max-width: 100%;
 }
 
+.displaySavedScores {
+    color: white;
+    background-color: purple;
+    text-align: center;
+    
+}
+
+.displayAnswr {
+    color: white;
+    text-align: center;
+    background-color: red;
+}
+
+.selection {
+    background-color: blueviolet;
+    color: white;
+    margin: 15px;
+    padding: 10px;
+    font-size: larger;
+}
+
+#ans {
+    text-align: center;
+    padding-top: 50px;
+    margin-top: 50px;
+    font-size: larger;
+}
+
+#username {
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+p {
+    color: white;
+    font-size: xx-large;
+    width: 100%;
+    text-align: center;
+    margin-top: 150px;
+    padding-top: 50px;
+}
