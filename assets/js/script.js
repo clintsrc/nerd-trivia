@@ -9,6 +9,8 @@ const showQuestions = document.querySelector('.containerQuests');
 const showCorrectAnswer = document.querySelector('.displayAnswr');
 const showScore = document.querySelector('.displayScore');
 const showAllScores = document.querySelector('.displaySavedScores');
+const homePage = document.querySelector('#backB');
+// const usernameDisplay = document.querySelector('.displayName'); <-- is on the carousel.js
 
 
 const questions = [
@@ -262,6 +264,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     init();
+});
+
+homePage.addEventListener('click',function(){
+    window.location.href = 'file:///C:/Bootcamp/challenges/portfolio/Project-1/Nerd-Trivia/nerd-trivia/index.html';
+    localStorage.removeItem('username');
 });
 
 
