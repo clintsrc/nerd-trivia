@@ -242,7 +242,7 @@ function showStoredScores() {
     if (scores.length > 0) {
         showAllScores.innerHTML = `<h2>Previous Scores:</h2><ul>`;
         scores.forEach(player => {
-            showAllScores.innerHTML += `<li>${player.username}: ${score}/${ttlScore}</li>`;
+            showAllScores.innerHTML += `<li>${player.username}: ${player.score}/${ttlScore}</li>`;
             showAllScores.innerHTML += `</ul>`;
         });
 
@@ -264,6 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 homePage.addEventListener('click',function(){
     window.location.href = 'file:///C:/Bootcamp/challenges/portfolio/Project-1/Nerd-Trivia/nerd-trivia/index.html';
+    localStorage.removeItem('username');
 });
 
 
