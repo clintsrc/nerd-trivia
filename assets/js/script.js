@@ -1,6 +1,6 @@
 let idxQuestion = 0;
 // let timeLimit = 60;
-const numSelectedQuestions = 3;
+const numSelectedQuestions = 10;
 // starting the score at 0.
 let score = 0;
 const ttlScore = numSelectedQuestions;
@@ -21,7 +21,7 @@ const questions = [
     },
     {
         question: 'What Nintendo console was codenamed NX while under development and featured controllers called "Joy-Cons" upon release?',
-        choices: ['Nintendo GameCube','intendo Wii U','Nintendo 3DS','Nintendo Switch'],
+        choices: ['Nintendo GameCube','Nintendo Wii U','Nintendo 3DS','Nintendo Switch'],
         answer: 'Nintendo Switch'
     },
     {
@@ -54,7 +54,7 @@ const questions = [
     {
         question: 'Which company created the PlayStation gaming console?',
         choices: ['Sony','Microsoft','Nintendo','Sega'],
-        answer: 'Sonny'
+        answer: 'Sony'
     },
     {
         question: 'Which video game series features the Master Chief?',
@@ -80,7 +80,7 @@ const questions = [
     },
 
     {
-        question: 'In the Super Mario Bros. video games, what is Mario"s" brother called?',
+        question: "In the Super Mario Bros. video games, what is Mario's brother called?",
         choices: ['Luiginho','Mario Jr','Luigi','Luigius'],
         answer: 'Luigi'
     },
@@ -121,7 +121,7 @@ const questions = [
     },
 
     {
-        question: 'Space Invaders invented the shoot "em up genre while which Nintendo classic popularized platformers?',
+        question: "Space Invaders invented the shoot 'em up genre while which Nintendo classic popularized platformers?",
         choices: ['Donkey Kong Jr.','Metroid','The Legend of Zelda','Super Mario Bros'],
         answer: 'Super Mario Bros'
     },
@@ -185,7 +185,7 @@ function handleAnswerClick (event, selectedQuestions) {
         // Changed the 'username input' to player.username and it stopped the button issue..
         showLastAnswer = `Incorrect. The correct answer is ${correctAnswer}`;
     }
-// Incorrect: ${player.username}. 
+
     showCorrectAnswer.innerText = showLastAnswer;
     console.log(showLastAnswer);
     showScore.innerText = `Score: ${score}/${ttlScore}`;

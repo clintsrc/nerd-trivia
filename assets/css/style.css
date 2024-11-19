@@ -34,7 +34,7 @@ h1 {
     font-size: large;
 }
 
-.displayScore {
+#displayScore {
     font-size: xx-large;
     font-weight: bolder;
     text-align: center;
