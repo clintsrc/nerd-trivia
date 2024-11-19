@@ -179,9 +179,13 @@ function handleAnswerClick (event, selectedQuestions) {
     if(button.textContent === correctAnswer) {
         score++;
         showLastAnswer = `Correct: ${correctAnswer}!`
+        showCorrectAnswer.classList.add("correct");
+        showCorrectAnswer.classList.remove("incorrect");
     } else {
         // Changed the 'username input' to player.username and it stopped the button issue..
         showLastAnswer = `Incorrect. The correct answer is ${correctAnswer}`;
+        showCorrectAnswer.classList.add("incorrect");
+        showCorrectAnswer.classList.remove("correct");
     }
 
     showCorrectAnswer.innerText = showLastAnswer;
