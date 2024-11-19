@@ -14,31 +14,119 @@ const showAllScores = document.querySelector('.displaySavedScores');
 
 const questions = [
     {
-        question: 'question index1',
-        choices: ['a1','b1','c1','d1'],
-        answer: 'a1'
+        question: 'Which video game console released in 2006 pioneered the use of motion controls in its gameplay?',
+        choices: ['Game-Boy','SuperNES','Nintendo Wii','Atari'],
+        answer: 'Nintendo Wii'
     },
     {
-        question: 'question index2',
-        choices: ['a2','b2','c2'],
-        answer: 'b2'
+        question: 'What Nintendo console was codenamed NX while under development and featured controllers called "Joy-Cons" upon release?',
+        choices: ['Nintendo GameCube','intendo Wii U','Nintendo 3DS','Nintendo Switch'],
+        answer: 'Nintendo Switch'
     },
     {
-        question: 'question index3',
-        choices: ['a3','b3','c3','d3','e3'],
-        answer: 'c3'
+        question: 'The first Star Wars video game, made for the Atari 2600, was based on which film in the original trilogy?',
+        choices: ['Return of the Jedi','The Empire Strikes Back','The Phantom Menace'],
+        answer: 'The Empire Strikes Back'
     },
     {
-        question: 'question index4',
-        choices: ['a4','b4','c4','d4'],
-        answer: 'd4'
+        question: 'Which popular video game franchise features the ally Sergeant Bananas?',
+        choices: ['Fortnite','Halo','Call of Duty','Teenage Mutant Ninja Turtles (TMNT)'],
+        answer: 'Teenage Mutant Ninja Turtles (TMNT)'
     },
     {
-        question: 'question index5',
-        choices: ['a5','b5','c5','d5'],
-        answer: 'a5'
+        question: 'What is the maximum number of Power Stars a player can collect in Super Mario 64?',
+        choices: ['150','120','100','95'],
+        answer: '120'
     },
-];
+
+    {
+        question: 'Originally given the Japanese title “Puckman”, what 1980s arcade game was inducted into the Guinness Book of Records as the "Most Successful Coin-Operated Game" in 2005?',
+        choices: ['Donkey Kong','Space Invaders','Pac-Man','Asteroids'],
+        answer: 'Pac-Man'
+    },
+    {
+        question: 'The word Tetris is a combination of the Greek word Tetra (meaning four) and what 6-letter sport that was a favorite of game creator Alexy Pajitnov?',
+        choices: ['Soccer','Basketball','Baseball','Tennis'],
+        answer: 'Tennis'
+    },
+
+    {
+        question: 'Which company created the PlayStation gaming console?',
+        choices: ['Sony','Microsoft','Nintendo','Sega'],
+        answer: 'Sonny'
+    },
+    {
+        question: 'Which video game series features the Master Chief?',
+        choices: ['Halo','Gears of War','Doom','Battlefield'],
+        answer: 'Halo'
+    },
+    
+    {
+        question: 'With what type of computer file can users play older video games on new computers? ',
+        choices: ['EXE','PDF','MP3','ROM'],
+        answer: 'ROM'
+    },
+    {
+        question: 'In what year was the Playstation 3 platform released?',
+        choices: ['2005','2006','2009','2007'],
+        answer: '2006'
+    },
+    
+    {
+        question: 'Call of Duty was first released in the year?',
+        choices: ['2000','2003','2005','2007'],
+        answer: '2003'
+    },
+
+    {
+        question: 'In the Super Mario Bros. video games, what is Mario"s" brother called?',
+        choices: ['Luiginho','Mario Jr','Luigi','Luigius'],
+        answer: 'Luigi'
+    },
+    
+    {
+        question: 'In the United States, what is the term used to describe the Sega Mega Drive console? ',
+        choices: ['Sega Genesis','Sega Genesis 2','Sega Saturn','Sega Dreamcast'],
+        answer: 'Sega Genesis'
+    },
+    {
+        question: 'In Prince of Persia: The Sands of Time, Farah uses what kind of weapons? ',
+        choices: ['Crossbow','Bow and Arrow','Bow','Magic Staff'],
+        answer: 'Bow'
+    },
+    
+    {
+        question: 'What is the nickname of Markus Persson, creator of Minecraft?',
+        choices: ['Notchzilla','Blockmaster','PixelKing','Notch'],
+        answer: 'Notch'
+    },
+
+    {
+        question: 'What gaming content platform was the most watched in 2022 on a viewership basis?',
+        choices: ['Vimeo','Twitch','Dailymotion'],
+        answer: 'Twitch'
+    },
+
+    {
+        question: 'Who developed the Android OS powering major mobile and tablet devices like the Nvidia Shield or Samsung Galaxy?',
+        choices: ['Apple','Microsoft','Nokia','Google'],
+        answer: 'Google'
+    },
+
+    {
+        question: 'What mode introduced co-op campaign play to the Halo franchise starting with Halo 3?',
+        choices: ['Firefight','Cooperative mode','Warzone','Big Team Battle'],
+        answer: 'Cooperative mode'
+    },
+
+    {
+        question: 'Space Invaders invented the shoot "em up genre while which Nintendo classic popularized platformers?',
+        choices: ['Donkey Kong Jr.','Metroid','The Legend of Zelda','Super Mario Bros'],
+        answer: 'Super Mario Bros'
+    },
+    ];
+
+
 
 
 /*
