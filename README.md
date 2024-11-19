@@ -1,12 +1,14 @@
 # Nerd Trivia
 
 ## Description
+
 Play a quiz game to test your trivia knowledge!
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn? TBD
+- Trivia games are a great way to test your knowledge competetively against other players, and a way to know more about video games than when you started and have fun along the way.
+
+- Creating the Nerd Trivia application provided a way to have hand-on experience as a team development a web application from the ground up using industry-standard tools. It was a fantastic challenge that allowed us to apply what we knew and to look beyond to find solutions we had not seen before.
+
+- Working together on a team reveals how important planning and communication are to the success of a project. Not only is it critical to avoid conflicts with the work itself, but collaborative tools and iterative reviews are integral for shaping the direction of the application.
 
 ## Installation
 
