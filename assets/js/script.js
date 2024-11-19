@@ -199,7 +199,7 @@ function handleAnswerClick (event, selectedQuestions) {
 // display the next question and answer choices
 function displayNextQuestion(selectedQuestions){
     // Show the question and create a div for the choices
-    showQuestions.innerHTML= `<h1>${selectedQuestions[idxQuestion].question}</h1><div id="ans"></div>`;
+    showQuestions.innerHTML= `<h1 id="question">${selectedQuestions[idxQuestion].question}</h1><div id="ans"></div>`;
     const ansDiv = document.getElementById('ans');
        
     // Show the buttons from the selected questions array
@@ -215,7 +215,7 @@ function displayNextQuestion(selectedQuestions){
 
 function endGame() {
     const username = localStorage.getItem('username');
-    showQuestions.innerHTML = `<h1>Game Over.</h1><div>Well done ${username}. Your final score is: ${score}</div>`;
+    showQuestions.innerHTML = `<h1 id="gameover">Game Over.</h1><div id="congrats">Well done ${username}. Your final score is: ${score}</div>`;
     scoreLocalStorage(username, score)
     showStoredScores();
 };
@@ -238,9 +238,9 @@ function displayLocalStorage(){
 function showStoredScores() {
     const scores = displayLocalStorage();
     if (scores.length > 0) {
-        showAllScores.innerHTML = `<h2>Previous Scores:</h2><ul>`;
+        showAllScores.innerHTML = `<h2 id="previous-scores">Previous Scores:</h2><ul>`;
         scores.forEach(player => {
-            showAllScores.innerHTML += `<li>${player.username}: ${score}/${ttlScore}</li>`;
+            showAllScores.innerHTML += `<li class="player-scores">${player.username}: ${player.score}/${ttlScore}</li>`;
             showAllScores.innerHTML += `</ul>`;
         });
 
