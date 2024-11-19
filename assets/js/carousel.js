@@ -38,7 +38,37 @@ function handleSubmission(e) {
 
 usernameForm.addEventListener('submit', handleSubmission);
 
-window.onload = loadUsernameFromLocalStorage;
+function getHighestScore() {
+    // Retrieve the scores from localStorage
+    const scores = JSON.parse(localStorage.getItem('score')) || [];
+    
+    // If there are no scores, return 0
+    if (scores.length === 0) return 0;
+
+    // Find the highest score
+    const highestScore = scores.reduce((max, player) => {
+        return player.score > max.score ? player : max;
+    });
+
+    return highestScore;
+}
+
+function displayHighestScore() {
+    const highestScorePlayer = getHighestScore();
+    const highScoreDisplay = document.querySelector('.highScoreDisplay');
+
+    if (highestScorePlayer) {
+        highScoreDisplay.innerHTML = `<h3>Highest Score: ${highestScorePlayer.username}   ${highestScorePlayer.score}/10</h3>`;
+    } else {
+        highScoreDisplay.innerHTML = `<h3>No scores yet.</h3>`;
+    }
+}
+
+window.onload = function() {
+    loadUsernameFromLocalStorage();
+    displayHighestScore();
+
+} 
 
 // This will handle the page redirect for every carousel image (made minor adjustments to index.html. plx review)
 
