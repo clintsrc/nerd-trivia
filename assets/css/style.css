@@ -16,6 +16,7 @@ body {
     text-align: center;
     padding-top: 20px;
     color: white;
+    font-family: 'Press Start 2P'
 }
 
 h1 {
@@ -29,6 +30,7 @@ h1 {
     font-size: x-large;
     padding-left: 5%;
     margin-left: 5%;
+    font-family: 'Press Start 2P';
 }
 
 .containerQuests {
@@ -37,6 +39,10 @@ h1 {
     width: 100%;
     height: 80%;
     overflow: hidden;
+    margin-top: 20px;
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
 }
 
 .UserInput {
@@ -57,8 +63,14 @@ h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    padding-bottom: 5px;
     background-color: whitesmoke;
     color: blue;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    font-family: 'Iceland';
+    font-weight: 400;
 }
 
 .container {    
@@ -67,15 +79,22 @@ h1 {
 
 .displaySavedScores {
     color: white;
-    background-color: purple;
+    background-image: linear-gradient(to bottom,  #6e2ebc, #0e11a1 );
     text-align: center;
-    
+    margin-top: 25px;
+    border-radius: 15%;
+    margin-top: 20px;
 }
 
-.displayAnswr {
+.displayAnswr.incorrect {
     color: white;
     text-align: center;
     background-color: red;
+}
+.displayAnswr.correct{
+    color: white;
+    text-align: center;
+    background-color: green;
 }
 
 .selection {
@@ -88,9 +107,10 @@ h1 {
 
 #ans {
     text-align: center;
-    padding-top: 50px;
-    margin-top: 50px;
-    font-size: larger;
+    padding-top: 20px;
+    margin-top: 40px;
+    font-size: x-large;
+    font-family: 'Iceland';
 }
 
 #username {
@@ -120,4 +140,46 @@ p {
 
 #backB{
     top: 80px;
+    background-image: linear-gradient(to top,  #6e2ebc, #0e11a1);
+    color: white;
+    
+}
+#congrats {
+    text-align: center;
+    background-color: white;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: xx-large;
+    font-family: 'Iceland';
+}
+
+.displayScore {
+    background-color: white;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    color: #0e11a1;
+    font-family: 'Press Start 2P';
+}
+
+#previous-scores {
+    background-image: linear-gradient();
+}
+
+li {
+    font-size: large;
+}
+
+#question {
+    padding-top: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Iceland';
+    font-weight: 400;
+}
+
+#gameover {
+    font-family: 'Press Start 2P';
 }
