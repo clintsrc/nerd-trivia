@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 homePage.addEventListener('click',function(){
-    window.location.href = 'file:///C:/Bootcamp/challenges/portfolio/Project-1/Nerd-Trivia/nerd-trivia/index.html';
+    window.location.href = 'index.html';
     localStorage.removeItem('username');
 });
 
