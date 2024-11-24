@@ -29,9 +29,9 @@ N/A
 * [River Hagen](https://github.com/RiverH117)
 * [Dillon Duran](https://github.com/DillonDuran)
 * [Clint Jones](https://github.com/clintsrc)
-* [Robert Grabowski](ttps://github.com/RGrabowski92)
+* [Robert Grabowski](https://github.com/RGrabowski92)
 
-Thanks to [Geronimo Perez](mailto:gperez@instructors.2u.com) for help with some of the initial code.
+Thanks to [Geronimo Perez](https://github.com/Geerooniimoo) for help with some of the initial code.
 
 [Nosa Obaseki's "localStorage in JavaScript: A complete guide"](https://blog.logrocket.com/localstorage-javascript-complete-guide/) from the [LogRocket Blog](https://blog.logrocket.com/) was very helpful!
 
